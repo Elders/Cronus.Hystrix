@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elders.Cronus.Hystrix", "Elders.Cronus.Hystrix\Elders.Cronus.Hystrix.csproj", "{5A6A1F55-9EBB-44B7-89FE-046DC790761F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".build", ".build", "{6A7EE58B-9CDD-46A9-86F6-EBC813F97BAF}"
+	ProjectSection(SolutionItems) = preProject
+		Elders.Cronus.Hystrix\Elders.Cronus.Hystrix.nuspec = Elders.Cronus.Hystrix\Elders.Cronus.Hystrix.nuspec
+		Elders.Cronus.Hystrix\RELEASE_NOTES.md = Elders.Cronus.Hystrix\RELEASE_NOTES.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5A6A1F55-9EBB-44B7-89FE-046DC790761F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A6A1F55-9EBB-44B7-89FE-046DC790761F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A6A1F55-9EBB-44B7-89FE-046DC790761F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A6A1F55-9EBB-44B7-89FE-046DC790761F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
