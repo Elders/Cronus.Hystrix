@@ -30,12 +30,53 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Elders.Cronus, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Cronus.3.0.0-beta0006\lib\net45-full\Elders.Cronus.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Elders.Cronus.DomainModeling, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Cronus.DomainModeling.3.0.2\lib\net45-full\Elders.Cronus.DomainModeling.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Elders.Multithreading.Scheduler, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Multithreading.Scheduler.1.1.0\lib\net45-full\Elders.Multithreading.Scheduler.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Elders.Servo, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Servo.0.1.0-beta0004\lib\net45-full\Elders.Servo.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Hystrix.NET.Contrib.ServoPublisher, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hystrix.NET.Contrib.ServoPublisher.1.0.0-beta0003\lib\net45-full\Hystrix.NET.Contrib.ServoPublisher.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Hystrix.NET.MetricsEventStream, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hystrix.NET.MetricsEventStream.1.0.0-beta0004\lib\net45-full\Hystrix.NET.MetricsEventStream.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Java.Util.Concurrent, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Servo.0.1.0-beta0004\lib\net45-full\Java.Util.Concurrent.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Netflix.Hystrix, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hystrix.1.0.0-beta0003\lib\net45-full\Netflix.Hystrix.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Packages\LibLog.4.2\LibLog.cs" />
+    <Compile Include="HystrixMiddleware.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
