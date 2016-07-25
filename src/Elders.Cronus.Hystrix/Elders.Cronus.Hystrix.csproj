@@ -57,7 +57,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Packages\LibLog.4.2\LibLog.cs" />
+    <Compile Include="HandleMessageHystrixCommand.cs" />
     <Compile Include="HystrixMiddleware.cs" />
+    <Compile Include="HystrixMiddlewareConfig.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
