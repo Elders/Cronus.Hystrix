@@ -6,9 +6,9 @@ namespace Elders.Cronus.Hystrix
     public class HystrixMiddleware : Middleware<HandleContext>
     {
         Middleware<HandleContext> actualHandle;
-        readonly HystrixCommandFactory commandFactory;
+        readonly IHystrixCommandFactory commandFactory;
 
-        public HystrixMiddleware(Middleware<HandleContext> actualHandle, HystrixCommandFactory commandFactory)
+        public HystrixMiddleware(Middleware<HandleContext> actualHandle, IHystrixCommandFactory commandFactory)
         {
             this.commandFactory = commandFactory;
             this.actualHandle = actualHandle;

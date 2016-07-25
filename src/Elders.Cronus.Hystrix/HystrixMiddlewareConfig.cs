@@ -5,7 +5,12 @@ using Netflix.Hystrix;
 
 namespace Elders.Cronus.Hystrix
 {
-    public class HystrixCommandFactory
+    public interface IHystrixCommandFactory
+    {
+        HystrixCommandSetter BuildCommandSettings(Type type);
+    }
+
+    public class HystrixCommandFactory : IHystrixCommandFactory
     {
         public HystrixCommandSetter BuildCommandSettings(Type type)
         {
@@ -23,7 +28,7 @@ namespace Elders.Cronus.Hystrix
 
     public static class HystrixMiddlewareConfig
     {
-        public static T UseHystrix<T>(this T self, Func<HystrixCommandFactory> settings = null) where T : ISubscrptionMiddlewareSettings<IMessage>
+        public static T UseHystrix<T>(this T self, Func<IHystrixCommandFactory> settings = null) where T : ISubscrptionMiddlewareSettings<IMessage>
         {
             var commandSettings = settings?.Invoke() ?? new HystrixCommandFactory();
             self.ActualHandle = new HystrixMiddleware(self.ActualHandle, commandSettings);
