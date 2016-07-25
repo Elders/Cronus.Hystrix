@@ -1,42 +1,55 @@
 ﻿using System;
+using Elders.Cronus.DomainModeling;
 using Elders.Cronus.Middleware;
+using Elders.Cronus.Pipeline.Config;
 using Netflix.Hystrix;
 using static Elders.Cronus.MessageProcessingMiddleware.MessageHandlerMiddleware;
 
 namespace Elders.Cronus.Hystrix
 {
-    public class HystrixMiddleware : Middleware.Middleware<HandleContext>
+    public static class HystrixMiddlewareConfig
     {
-        Middleware.Middleware<HandleContext> actualHandle;
-        public HystrixMiddleware(Middleware.Middleware<HandleContext> actualHandle)
+        public static T UseHystrix<T>(this T self) where T : ISubscrptionMiddlewareSettings<IMessage>
+        {
+            self.ActualHandle = new HystrixMiddleware(self.ActualHandle);
+            return self;
+        }
+    }
+
+    public class HystrixMiddleware : Middleware<HandleContext>
+    {
+        Middleware<HandleContext> actualHandle;
+        public HystrixMiddleware(Middleware<HandleContext> actualHandle)
         {
             this.actualHandle = actualHandle;
         }
 
-        protected override void Run(Execution<HandleContext> context)
+        protected override void Run(Execution<HandleContext> execution)
         {
-            var cmd = new HandleMessageHystrixCommand(actualHandle, context);
+            var key = execution.Context.HandlerInstance.GetType().Name;
+            var cfg = HystrixCommandSetter.WithGroupKey(key)
+                .AndCommandKey(key)
+                .AndCommandPropertiesDefaults(
+                    new HystrixCommandPropertiesSetter()
+                    .WithExecutionIsolationThreadTimeout(TimeSpan.FromSeconds(1.0))
+                    .WithExecutionIsolationStrategy(ExecutionIsolationStrategy.Semaphore)
+                    .WithExecutionIsolationThreadInterruptOnTimeout(true));
+
+            var cmd = new HandleMessageHystrixCommand(actualHandle, execution, cfg);
             cmd.Execute();
         }
     }
 
     public class HandleMessageHystrixCommand : HystrixCommand<bool>
     {
-        Middleware.Middleware<HandleContext> actualHandle;
+        Middleware<HandleContext> actualHandle;
         Execution<HandleContext> context;
 
-        public HandleMessageHystrixCommand(Middleware.Middleware<HandleContext> actualHandle, Execution<HandleContext> context)
-            : base(HystrixCommandSetter.WithGroupKey(context.Context.HandlerInstance.GetType().Name)
-                .AndCommandKey(context.Context.Message.GetType().Name)
-                .AndCommandPropertiesDefaults(
-                    new HystrixCommandPropertiesSetter()
-                    .WithExecutionIsolationThreadTimeout(TimeSpan.FromSeconds(1.0))
-                    .WithExecutionIsolationStrategy(ExecutionIsolationStrategy.Semaphore)
-                    .WithExecutionIsolationThreadInterruptOnTimeout(true)))
+        public HandleMessageHystrixCommand(Middleware<HandleContext> actualHandle, Execution<HandleContext> context, HystrixCommandSetter hystrixCfg)
+            : base(hystrixCfg)
         {
             this.actualHandle = actualHandle;
             this.context = context;
-
         }
 
         protected override bool Run()
@@ -44,7 +57,5 @@ namespace Elders.Cronus.Hystrix
             actualHandle.Run(context.Context);
             return true;
         }
-
-
     }
 }
