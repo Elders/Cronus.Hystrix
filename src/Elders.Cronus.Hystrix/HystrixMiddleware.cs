@@ -1,4 +1,5 @@
-﻿using Elders.Cronus.Middleware;
+﻿using Elders.Cronus.MessageProcessingMiddleware;
+using Elders.Cronus.Middleware;
 using static Elders.Cronus.MessageProcessingMiddleware.MessageHandlerMiddleware;
 
 namespace Elders.Cronus.Hystrix
@@ -16,7 +17,7 @@ namespace Elders.Cronus.Hystrix
 
         protected override void Run(Execution<HandleContext> execution)
         {
-            var settings = commandFactory.BuildCommandSettings(execution.Context.HandlerInstance.GetType());
+            var settings = commandFactory.BuildCommandSettings(execution.Context.HandlerType);
             var cmd = new HandleMessageHystrixCommand(actualHandle, execution, settings);
             cmd.Execute();
         }

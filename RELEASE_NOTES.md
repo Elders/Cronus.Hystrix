@@ -1,4 +1,7 @@
-﻿#### 1.0.0-beta0004 - 25.07.2016
+﻿#### 1.0.0-beta0005 - 25.07.2016
+* UseHystrix is extension to the middlewares not the confiugration
+
+#### 1.0.0-beta0004 - 25.07.2016
 * Externalize the Hystrix command settings
 
 #### 1.0.0-beta0003 - 25.07.2016

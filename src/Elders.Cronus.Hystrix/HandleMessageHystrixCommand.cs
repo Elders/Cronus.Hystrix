@@ -1,4 +1,5 @@
-﻿using Elders.Cronus.Middleware;
+﻿using Elders.Cronus.MessageProcessingMiddleware;
+using Elders.Cronus.Middleware;
 using Netflix.Hystrix;
 using static Elders.Cronus.MessageProcessingMiddleware.MessageHandlerMiddleware;
 

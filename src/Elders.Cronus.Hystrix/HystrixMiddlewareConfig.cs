@@ -1,6 +1,6 @@
 ﻿using System;
-using Elders.Cronus.DomainModeling;
-using Elders.Cronus.Pipeline.Config;
+using Elders.Cronus.MessageProcessingMiddleware;
+using Elders.Cronus.Middleware;
 using Netflix.Hystrix;
 
 namespace Elders.Cronus.Hystrix
@@ -28,11 +28,10 @@ namespace Elders.Cronus.Hystrix
 
     public static class HystrixMiddlewareConfig
     {
-        public static T UseHystrix<T>(this T self, Func<IHystrixCommandFactory> settings = null) where T : ISubscrptionMiddlewareSettings<IMessage>
+        public static Middleware<HandleContext> UseHystrix(this Middleware<HandleContext> self, Func<IHystrixCommandFactory> settings = null)
         {
             var commandSettings = settings?.Invoke() ?? new HystrixCommandFactory();
-            self.ActualHandle = new HystrixMiddleware(self.ActualHandle, commandSettings);
-            return self;
+            return new HystrixMiddleware(self, commandSettings);
         }
     }
 }
