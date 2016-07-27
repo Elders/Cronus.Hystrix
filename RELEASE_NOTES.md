@@ -1,4 +1,7 @@
-﻿#### 1.0.0-beta0006 - 27.07.2016
+﻿#### 1.0.0-beta0007 - 27.07.2016
+* Rename nuget package to Elders.Cronus.Hystrix.NET
+
+#### 1.0.0-beta0006 - 27.07.2016
 * Use new nuget packages
 
 #### 1.0.0-beta0005 - 25.07.2016
