@@ -1,7 +1,7 @@
 ﻿using System;
 using Elders.Cronus.MessageProcessingMiddleware;
 using Elders.Cronus.Middleware;
-using Netflix.Hystrix;
+using Elders.Hystrix.NET;
 
 namespace Elders.Cronus.Hystrix
 {
