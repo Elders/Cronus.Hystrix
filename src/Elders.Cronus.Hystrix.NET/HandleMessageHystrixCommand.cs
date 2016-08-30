@@ -1,4 +1,4 @@
-﻿using Elders.Cronus.MessageProcessingMiddleware;
+﻿using Elders.Cronus.MessageProcessing;
 using Elders.Cronus.Middleware;
 using Elders.Hystrix.NET;
 

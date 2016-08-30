@@ -1,6 +1,5 @@
-﻿using Elders.Cronus.MessageProcessingMiddleware;
+﻿using Elders.Cronus.MessageProcessing;
 using Elders.Cronus.Middleware;
-using static Elders.Cronus.MessageProcessingMiddleware.MessageHandlerMiddleware;
 
 namespace Elders.Cronus.Hystrix
 {
