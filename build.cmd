@@ -46,8 +46,8 @@ IF NOT [%1]==[] (set RELEASE_NUGETKEY="%1")
 IF NOT [%2]==[] (set RELEASE_TARGETSOURCE="%2")
 
 SET RELEASE_NOTES=RELEASE_NOTES.md
-SET SUMMARY="Elders.Cronus.Hystrix"
-SET DESCRIPTION="Elders.Cronus.Hystrix"
+SET SUMMARY="Hystrix middleware for Cronus"
+SET DESCRIPTION="Hystrix middleware for Cronus"
 
 %FAKE% %NYX% appName=Elders.Cronus.Hystrix.NET appReleaseNotes=%RELEASE_NOTES% appSummary=%SUMMARY% appDescription=%DESCRIPTION% nugetkey=%RELEASE_NUGETKEY% nugetPackageName=Cronus.Hystrix.NET
 

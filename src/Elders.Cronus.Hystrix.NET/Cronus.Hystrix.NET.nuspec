@@ -8,9 +8,9 @@
     <language>en-US</language>
     <summary>@summary@</summary>
     <licenseUrl>https://github.com/Elders/Cronus.Hystrix/blob/master/LICENSE</licenseUrl>
-    <projectUrl>https://github.com/Elders/Cronus.Hystrix</projectUrl>
+    <projectUrl>https://github.com/Elders/Cronus</projectUrl>
     <releaseNotes>@releaseNotes@</releaseNotes>
-    <tags>cronus, hystrix</tags>
+    <tags>cronus, hystrix, circuit, breaker</tags>
     @dependencies@
   </metadata>
 </package>
